@@ -10,7 +10,9 @@ before_install:
     - conda activate test
     - conda install -y pycodestyle
     - conda install --yes python=3.6
+    - conda install --yes numpy
       
 script:
+    - python -m unittest test_math_lib.py
     - bash test_viz.sh
     - python test_viz.py

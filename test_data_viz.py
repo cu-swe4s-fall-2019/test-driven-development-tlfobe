@@ -64,3 +64,8 @@ class TestHistogram(unittest.TestCase):
                           [1, 2, 3, 4, 5, 6, 7],
                           1,
                           )
+
+    def test_histogram_write_to_file(self):
+        data_viz.histogram([1,2,3,4,5,6,5,4,3,2,1], 'newfile.png')
+        self.assertTrue(os.path.exists("newfile.png"))
+        os.remove("newfile.png")

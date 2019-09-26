@@ -51,6 +51,11 @@ class TestMathLib(unittest.TestCase):
                           [],
                           )
 
+    def test_list_stdev_wrong_type(self):
+        self.assertRaises(TypeError, math_lib.list_stdev, 'string')
+        self.assertRaises(TypeError, math_lib.list_stdev, dict())
+        self.assertRaises(TypeError, math_lib.list_stdev, True)
+
 
     
 

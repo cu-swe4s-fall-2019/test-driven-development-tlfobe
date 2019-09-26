@@ -28,7 +28,7 @@ class TestMathLib(unittest.TestCase):
                           )
 
     def test_list_mean_const(self):
-        self.assertEquals(math_lib.list_mean([1,2,3,4,5]), 3)
+        self.assertEqual(math_lib.list_mean([1,2,3,4,5]), 3)
 
     def test_list_mean_random(self):
         exp_mean = np.random.uniform(0, 100)
@@ -36,7 +36,7 @@ class TestMathLib(unittest.TestCase):
         self.assertAlmostEqual(math_lib.list_mean(dist), exp_mean, places = 1)
 
     def test_list_mean_complex(self):
-        self.assertEquals(math_lib.list_mean([1-3j, 2-2j, 3-1j]), 2-2j)
+        self.assertEqual(math_lib.list_mean([1-3j, 2-2j, 3-1j]), 2-2j)
 
     # list_stdev test
     def test_list_stdev_null(self):
@@ -55,6 +55,13 @@ class TestMathLib(unittest.TestCase):
         self.assertRaises(TypeError, math_lib.list_stdev, 'string')
         self.assertRaises(TypeError, math_lib.list_stdev, dict())
         self.assertRaises(TypeError, math_lib.list_stdev, True)
+
+    def test_list_stdev_list_wrong_type(self):
+        self.assertRaises(TypeError, math_lib.list_stdev,
+                          ['string', 1, 2, ['List!']]
+                          )
+
+    
 
 
     

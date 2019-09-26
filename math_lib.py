@@ -44,4 +44,7 @@ def list_stdev(L):
         raise TypeError("list_mean : List contains invalid type!")
 
 
-    return None
+    else:
+        mean = list_mean(L)
+        stdev = np.sqrt(sum([(mean - x)**2 for x in L]) / len(L))
+        return(stdev)

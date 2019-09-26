@@ -61,7 +61,9 @@ class TestMathLib(unittest.TestCase):
                           ['string', 1, 2, ['List!']]
                           )
 
-    
+    def test_list_stdev_const(self):
+        self.assertEqual(math_lib.list_stdev([1,1,1,1,1,1,1]), 0)
+        self.assertEqual(math_lib.list_stdev([1,2]), 0.5)
 
 
     

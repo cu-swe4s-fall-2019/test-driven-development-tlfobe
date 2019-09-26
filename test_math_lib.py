@@ -28,17 +28,17 @@ class TestMathLib(unittest.TestCase):
                           )
 
     def test_list_mean_const(self):
-        self.assertEqual(math_lib.list_mean([1,2,3,4,5]), 3)
+        self.assertEqual(math_lib.list_mean([1, 2, 3, 4, 5]), 3)
 
     def test_list_mean_random(self):
         exp_mean = np.random.uniform(0, 100)
         dist = np.random.normal(loc=exp_mean, scale=1, size=10000).tolist()
-        self.assertAlmostEqual(math_lib.list_mean(dist), exp_mean, places = 1)
+        self.assertAlmostEqual(math_lib.list_mean(dist), exp_mean, places=1)
 
     def test_list_mean_random_numpy(self):
         exp_mean = np.random.uniform(0, 100)
         dist = np.random.normal(loc=exp_mean, scale=1, size=10000)
-        self.assertAlmostEqual(math_lib.list_mean(dist), exp_mean, places = 1)
+        self.assertAlmostEqual(math_lib.list_mean(dist), exp_mean, places=1)
 
     def test_list_mean_complex(self):
         self.assertEqual(math_lib.list_mean([1-3j, 2-2j, 3-1j]), 2-2j)
@@ -46,9 +46,9 @@ class TestMathLib(unittest.TestCase):
     # list_stdev test
     def test_list_stdev_null(self):
         self.assertRaises(TypeError,
-                    math_lib.list_stdev,
-                    None,
-                    )
+                          math_lib.list_stdev,
+                          None,
+                          )
 
     def test_list_stdev_empty_list(self):
         self.assertRaises(IndexError,
@@ -67,16 +67,15 @@ class TestMathLib(unittest.TestCase):
                           )
 
     def test_list_stdev_const(self):
-        self.assertEqual(math_lib.list_stdev([1,1,1,1,1,1,1]), 0)
-        self.assertEqual(math_lib.list_stdev([1,2]), 0.5)
+        self.assertEqual(math_lib.list_stdev([1, 1, 1, 1, 1, 1, 1]), 0)
+        self.assertEqual(math_lib.list_stdev([1, 2]), 0.5)
 
     def test_list_stdev_random(self):
         exp_std = np.random.uniform(0, 100)
         dist = np.random.normal(loc=0, scale=exp_std, size=100000).tolist()
-        self.assertAlmostEqual(math_lib.list_stdev(dist), exp_std, places = 0) 
+        self.assertAlmostEqual(math_lib.list_stdev(dist), exp_std, places=0)
 
     def test_list_stdev_random_numpy(self):
         exp_std = np.random.uniform(0, 100)
         dist = np.random.normal(loc=0, scale=exp_std, size=100000)
-        self.assertAlmostEqual(math_lib.list_stdev(dist), exp_std, places = 0) 
-
+        self.assertAlmostEqual(math_lib.list_stdev(dist), exp_std, places=0)

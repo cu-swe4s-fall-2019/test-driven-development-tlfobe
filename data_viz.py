@@ -19,7 +19,7 @@ def boxplot(L, out_file_name="boxplot.png"):
     list_types = [not isinstance(val, (float, int, complex,
                                        np.float, np.int, np.complex
                                        )
-                                )
+                                 )
                   for val in L]
 
     if any(list_types):
@@ -40,8 +40,11 @@ def boxplot(L, out_file_name="boxplot.png"):
         plt.savefig(out_file_name, bbox_inches='tight')
     except PermissionError:
         raise PermissionError(
-            "boxplot : Unable to write to "+out_file_name+ \
+            "boxplot : Unable to write to "+out_file_name +
             ". Check file permissions!")
+    except TypeError:
+        raise TypeError(
+            "boxplot : Incompatible file extension on "+out_file_name)
 
 
 def histogram(L, out_file_name="histogram.png"):
@@ -55,7 +58,8 @@ def histogram(L, out_file_name="histogram.png"):
     if len(L) == 0:
         raise IndexError("histogram : Unpopulated list!")
 
-    list_types = [not isinstance(val, (float, int, complex, np.float, np.int, np.complex))
+    list_types = [not isinstance(val, (float, int, complex,
+                                       np.float, np.int, np.complex))
                   for val in L]
 
     if any(list_types):
@@ -74,9 +78,13 @@ def histogram(L, out_file_name="histogram.png"):
         ax.hist(L)
     try:
         plt.savefig(out_file_name, bbox_inches='tight')
-    except:
+    except PermissionError:
         raise PermissionError(
-            "histogram : Unable to write to "+out_file_name+". Check file permissions!")
+            "histogram : Unable to write to "+out_file_name +
+            ". Check file permissions!")
+    except TypeError:
+        raise TypeError(
+            "histogram : Incompatible file extension on "+out_file_name)
 
 
 def combo(L, out_file_name="hist_boxplot_combo.png"):
@@ -90,7 +98,8 @@ def combo(L, out_file_name="hist_boxplot_combo.png"):
     if len(L) == 0:
         raise IndexError("combo : Unpopulated list!")
 
-    list_types = [not isinstance(val, (float, int, complex, np.float, np.int, np.complex))
+    list_types = [not isinstance(val, (float, int, complex,
+                                       np.float, np.int, np.complex))
                   for val in L]
 
     if any(list_types):
@@ -115,6 +124,10 @@ def combo(L, out_file_name="hist_boxplot_combo.png"):
         ax2.boxplot(L)
     try:
         plt.savefig(out_file_name, bbox_inches='tight')
-    except:
-        raise PermissionError("combo : Unable to write to " +
-                              out_file_name+". Check file permissions!")
+    except PermissionError:
+        raise PermissionError(
+            "combo : Unable to write to "+out_file_name +
+            ". Check file permissions!")
+    except TypeError:
+        raise TypeError(
+            "combo : Incompatible file extension on "+out_file_name)

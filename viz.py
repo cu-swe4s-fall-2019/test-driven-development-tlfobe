@@ -44,7 +44,8 @@ def main():
                   " is not in STDIN!", file=sys.stderr)
             sys.exit(1)
     if args.in_type == "file":
-        print("viz.py : This feature is not implemented yet! Sorry!", file=sys.stderr)
+        print("viz.py : This feature is not implemented yet! Sorry!",
+              file=sys.stderr)
         sys.exit(1)
     if args.plot_type == "histogram":
         try:
@@ -53,7 +54,8 @@ def main():
             print("viz.py : STDIN list is empty!")
         except PermissionError:
             print("viz.py : Output file "+args.out_file +
-                  " is not accessible. Check your permissions!", file=sys.stderr)
+                  " is not accessible. Check your permissions!",
+                  file=sys.stderr)
     if args.plot_type == "boxplot":
         try:
             data_viz.boxplot(data, out_file_name=args.out_file)
@@ -61,7 +63,8 @@ def main():
             print("viz.py : STDIN list is empty!")
         except PermissionError:
             print("viz.py : Output file "+args.out_file +
-                  " is not accessible. Check your permissions!", file=sys.stderr)
+                  " is not accessible. Check your permissions!",
+                  file=sys.stderr)
     if args.plot_type == "combo":
         try:
             data_viz.combo(data, out_file_name=args.out_file)
@@ -69,7 +72,8 @@ def main():
             print("viz.py : STDIN list is empty!")
         except PermissionError:
             print("viz.py : Output file "+args.out_file +
-                  " is not accessible. Check your permissions!", file=sys.stderr)
+                  " is not accessible. Check your permissions!",
+                  file=sys.stderr)
 
 
 if __name__ == '__main__':

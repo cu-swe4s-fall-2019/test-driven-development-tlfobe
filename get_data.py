@@ -8,11 +8,12 @@ def read_stdin_col(col_num):
         raise TypeError("read_stdin_col : Incorrect input type!")
 
     stdin = sys.stdin.readlines()
-    if len(stdin[0].rstrip().split(' ')) > col_num:
+    if len(stdin[0].rstrip().split(' ')) < col_num:
+        print(stdin[0].rstrip().split(' '))
         raise IndexError("read_stdin_col : col_num is out of range!")
 
     column = []
     for line in stdin:
         value = line.rstrip().split(' ')[col_num]
-        column.append(value)
+        column.append(int(value))
     return column

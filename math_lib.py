@@ -13,7 +13,8 @@ def list_mean(L):
     if len(L) == 0:
         raise IndexError("list_mean : Unpopulated list!")
 
-    list_types = [not isinstance(val, (float, int, complex, np.float, np.int, np.complex))
+    list_types = [not isinstance(val, (float, int, complex,
+                                       np.float, np.int, np.complex))
                   for val in L]
 
     if any(list_types):
@@ -35,7 +36,8 @@ def list_stdev(L):
     if len(L) == 0:
         raise IndexError("list_mean : Unpopulated list!")
 
-    list_types = [not isinstance(val, (float, int, complex, np.float, np.int, np.complex))
+    list_types = [not isinstance(val, (float, int, complex,
+                                       np.float, np.int, np.complex))
                   for val in L]
 
     if any(list_types):

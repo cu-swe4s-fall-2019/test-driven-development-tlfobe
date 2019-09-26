@@ -32,8 +32,10 @@ def boxplot(L, out_file_name = "boxplot.png"):
         ax.set_ylabel("Values")
         
         ax.boxplot(L)
+    try:
         plt.savefig(out_file_name, bbox_inches='tight')
-        return 0
+    except:
+        raise PermissionError("boxplot : Unable to write to "+out_file_name+". Check file permissions!")
 
 
 
@@ -68,7 +70,10 @@ def histogram(L, out_file_name = "histogram.png"):
         ax.set_xlabel("Frequency")
         
         ax.hist(L)
+    try:
         plt.savefig(out_file_name, bbox_inches='tight')
+    except:
+        raise PermissionError("histogram : Unable to write to "+out_file_name+". Check file permissions!")
 
 
 def combo(L, out_file_name = "hist_boxplot_combo.png"):

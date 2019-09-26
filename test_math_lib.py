@@ -35,6 +35,11 @@ class TestMathLib(unittest.TestCase):
         dist = np.random.normal(loc=exp_mean, scale=1, size=10000).tolist()
         self.assertAlmostEqual(math_lib.list_mean(dist), exp_mean, places = 1)
 
+    def test_list_mean_random_numpy(self):
+        exp_mean = np.random.uniform(0, 100)
+        dist = np.random.normal(loc=exp_mean, scale=1, size=10000)
+        self.assertAlmostEqual(math_lib.list_mean(dist), exp_mean, places = 1)
+
     def test_list_mean_complex(self):
         self.assertEqual(math_lib.list_mean([1-3j, 2-2j, 3-1j]), 2-2j)
 
@@ -70,7 +75,7 @@ class TestMathLib(unittest.TestCase):
         dist = np.random.normal(loc=0, scale=exp_std, size=100000).tolist()
         self.assertAlmostEqual(math_lib.list_stdev(dist), exp_std, places = 0) 
 
-    def test_list_stdev_np_array(self):
+    def test_list_stdev_random_numpy(self):
         exp_std = np.random.uniform(0, 100)
         dist = np.random.normal(loc=0, scale=exp_std, size=100000)
         self.assertAlmostEqual(math_lib.list_stdev(dist), exp_std, places = 0) 

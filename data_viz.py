@@ -71,5 +71,24 @@ def histogram(L, out_file_name = "histogram.png"):
         plt.savefig(out_file_name, bbox_inches='tight')
 
 
-def combo(L, out_file_name):
-    pass
+def combo(L, out_file_name = "hist_boxplot_combo.png"):
+    if L is None:
+        raise TypeError("combo : Please supply a list and")
+
+    if not isinstance(L, (list, np.ndarray)):
+        raise TypeError("combo : Incorrect input type, "
+                        + "please supply a list!")
+
+    if len(L) == 0:
+        raise IndexError("combo : Unpopulated list!")
+
+    list_types = [not isinstance(val, (float, int, complex, np.float, np.int, np.complex))
+                  for val in L]
+
+    if any(list_types):
+        raise TypeError("combo : List contains invalid type!")
+
+    if type(out_file_name) != str:
+        raise TypeError("combo : filename is invalid type!")
+    else:
+        return None

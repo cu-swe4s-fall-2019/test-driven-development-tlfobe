@@ -69,3 +69,32 @@ class TestHistogram(unittest.TestCase):
         data_viz.histogram([1,2,3,4,5,6,5,4,3,2,1], 'newfile.png')
         self.assertTrue(os.path.exists("newfile.png"))
         os.remove("newfile.png")
+
+class TestCombo(unittest.TestCase):
+    def test_combo_null(self):
+        self.assertRaises(TypeError,
+                          data_viz.combo,
+                          None,
+                          )
+
+    def test_combo_empty_list(self):
+        self.assertRaises(IndexError,
+                          data_viz.combo,
+                          [],
+                          )
+
+    def test_combo_wrong_type(self):
+        self.assertRaises(TypeError, data_viz.combo, 'string','file.png')
+        self.assertRaises(TypeError, data_viz.combo, dict(),'file.png')
+        self.assertRaises(TypeError, data_viz.combo, True,'file.png')
+
+    def test_combo_list_wrong_type(self):
+        self.assertRaises(TypeError, data_viz.combo,
+                          ['string', 1, 2, ['List!'],],
+                           )
+
+    def test_combo_filename_str(self):
+        self.assertRaises(TypeError, data_viz.combo,
+                          [1, 2, 3, 4, 5, 6, 7],
+                          1,
+                          )

@@ -45,5 +45,12 @@ class TestMathLib(unittest.TestCase):
                     None,
                     )
 
+    def test_list_stdev_empty_list(self):
+        self.assertRaises(IndexError,
+                          math_lib.list_stdev,
+                          [],
+                          )
+
+
     
 

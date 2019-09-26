@@ -14,5 +14,7 @@ before_install:
       
 script:
     - python -m unittest test_math_lib.py
+    - bash gen_data_random.sh | python -m unittest test_get_data.py
+    - bash gen_data.sh | python -m unittest test_get_data.py
     - bash test_viz.sh
     - python test_viz.py

@@ -8,7 +8,7 @@ def list_mean(L):
 
     if not isinstance(L, (list, np.ndarray)):
         raise TypeError("list_mean : Incorrect input type, "
-                         + "please supply a list!")
+                        + "please supply a list!")
 
     if len(L) == 0:
         raise IndexError("list_mean : Unpopulated list!")
@@ -22,8 +22,6 @@ def list_mean(L):
     else:
         mean = sum(L)/len(L)
         return(mean)
-    
-
 
 
 def list_stdev(L):
@@ -32,7 +30,7 @@ def list_stdev(L):
 
     if not isinstance(L, (list, np.ndarray)):
         raise TypeError("list_mean : Incorrect input type, "
-                         + "please supply a list!")
+                        + "please supply a list!")
 
     if len(L) == 0:
         raise IndexError("list_mean : Unpopulated list!")
@@ -42,7 +40,6 @@ def list_stdev(L):
 
     if any(list_types):
         raise TypeError("list_mean : List contains invalid type!")
-
 
     else:
         mean = list_mean(L)

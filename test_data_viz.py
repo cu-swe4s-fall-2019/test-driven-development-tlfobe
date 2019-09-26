@@ -1,4 +1,5 @@
 import unittest
+import os
 import data_viz
 
 class TestBoxPlot(unittest.TestCase):
@@ -29,6 +30,11 @@ class TestBoxPlot(unittest.TestCase):
                           [1, 2, 3, 4, 5, 6, 7],
                           1,
                           )
+    
+    def test_boxplot_write_to_file(self):
+        data_viz.boxplot([1,2,3,4,5,6,5,4,3,2,1], 'newfile.png')
+        self.assertTrue(os.path.exists("newfile.png"))
+        os.remove("newfile.png")
 
 class TestHistogram(unittest.TestCase):
     def test_histogram_null(self):

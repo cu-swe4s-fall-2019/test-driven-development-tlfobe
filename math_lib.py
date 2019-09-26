@@ -27,4 +27,6 @@ def list_mean(L):
 
 
 def list_stdev(L):
+    if L is None:
+        raise TypeError("list_mean : Please supply a list!")
     return None

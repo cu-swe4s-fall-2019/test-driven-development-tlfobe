@@ -4,6 +4,7 @@ import numpy as np
 
 
 class TestMathLib(unittest.TestCase):
+    # list_mean Tests
     def test_list_mean_null(self):
         self.assertRaises(TypeError,
                           math_lib.list_mean,
@@ -34,8 +35,15 @@ class TestMathLib(unittest.TestCase):
         dist = np.random.normal(loc=exp_mean, scale=1, size=10000).tolist()
         self.assertAlmostEqual(math_lib.list_mean(dist), exp_mean, places = 1)
 
-    def test_listmean_complex(self):
+    def test_list_mean_complex(self):
         self.assertEquals(math_lib.list_mean([1-3j, 2-2j, 3-1j]), 2-2j)
+
+    # list_stdev test
+    def test_list_stdev_null(self):
+        self.assertRaises(TypeError,
+                    math_lib.list_stdev,
+                    None,
+                    )
 
     
 

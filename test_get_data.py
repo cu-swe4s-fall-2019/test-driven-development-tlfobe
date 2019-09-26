@@ -1,5 +1,6 @@
 import unittest
 import get_data
+import sys
 
 class TestGetData(unittest.TestCase):
     def test_read_stdin_null(self):
@@ -11,3 +12,12 @@ class TestGetData(unittest.TestCase):
         self.assertRaises(TypeError, get_data.read_stdin_col, {1:2, 2:3})
         self.assertRaises(TypeError, get_data.read_stdin_col, 10.32)
         self.assertRaises(TypeError, get_data.read_stdin_col, 1+1j)
+
+    def test_read_stdin_out_of_range(self):
+
+        for line in sys.stdin.readlines()[0]:
+            size = len(line.rstrip().split(' '))
+             
+        self.assertRaises(IndexError, get_data.read_stdin_col, size+1)
+
+

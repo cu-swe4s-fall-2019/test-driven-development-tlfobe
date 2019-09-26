@@ -29,19 +29,19 @@ def main():
     parser.add_argument("--in_type",
                         required=False,
                         help="how data will be fed to the program",
-                        type = str,
+                        type=str,
                         default="stdin",
                         choices=["stdin", "file"]
                         )
 
     args = parser.parse_args()
 
-    
     if args.in_type == "stdin":
-        try: 
+        try:
             data = get_data.read_stdin_col(args.col_number)
         except IndexError:
-            print("viz.py : Index "+str(args.col_number)+" is not in STDIN!", file=sys.stderr)
+            print("viz.py : Index "+str(args.col_number) +
+                  " is not in STDIN!", file=sys.stderr)
             sys.exit(1)
     if args.in_type == "file":
         print("viz.py : This feature is not implemented yet! Sorry!", file=sys.stderr)
@@ -52,23 +52,24 @@ def main():
         except IndexError:
             print("viz.py : STDIN list is empty!")
         except PermissionError:
-            print("viz.py : Output file "+args.out_file+" is not accessible. Check your permissions!", file=sys.stderr)
+            print("viz.py : Output file "+args.out_file +
+                  " is not accessible. Check your permissions!", file=sys.stderr)
     if args.plot_type == "boxplot":
         try:
             data_viz.boxplot(data, out_file_name=args.out_file)
         except IndexError:
             print("viz.py : STDIN list is empty!")
         except PermissionError:
-            print("viz.py : Output file "+args.out_file+" is not accessible. Check your permissions!", file=sys.stderr)
+            print("viz.py : Output file "+args.out_file +
+                  " is not accessible. Check your permissions!", file=sys.stderr)
     if args.plot_type == "combo":
         try:
             data_viz.combo(data, out_file_name=args.out_file)
         except IndexError:
             print("viz.py : STDIN list is empty!")
         except PermissionError:
-            print("viz.py : Output file "+args.out_file+" is not accessible. Check your permissions!", file=sys.stderr)    
-
-
+            print("viz.py : Output file "+args.out_file +
+                  " is not accessible. Check your permissions!", file=sys.stderr)
 
 
 if __name__ == '__main__':

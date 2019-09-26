@@ -16,7 +16,10 @@ def boxplot(L, out_file_name="boxplot.png"):
     if len(L) == 0:
         raise IndexError("boxplot : Unpopulated list!")
 
-    list_types = [not isinstance(val, (float, int, complex, np.float, np.int, np.complex))
+    list_types = [not isinstance(val, (float, int, complex,
+                                       np.float, np.int, np.complex
+                                       )
+                                )
                   for val in L]
 
     if any(list_types):
@@ -35,9 +38,10 @@ def boxplot(L, out_file_name="boxplot.png"):
         ax.boxplot(L)
     try:
         plt.savefig(out_file_name, bbox_inches='tight')
-    except:
+    except PermissionError:
         raise PermissionError(
-            "boxplot : Unable to write to "+out_file_name+". Check file permissions!")
+            "boxplot : Unable to write to "+out_file_name+ \
+            ". Check file permissions!")
 
 
 def histogram(L, out_file_name="histogram.png"):

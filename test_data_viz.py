@@ -39,12 +39,12 @@ class TestBoxPlot(unittest.TestCase):
         os.remove("newfile.png")
 
     def test_combo_permission(self):
-        with open("read_only.txt", "w") as f:
+        with open("read_only.png", "w") as f:
             f.write("Hello, World!")
-        os.chmod("read_only.txt", stat.S_IREAD | stat.S_IRGRP | stat.S_IROTH)
+        os.chmod("read_only.png", stat.S_IREAD | stat.S_IRGRP | stat.S_IROTH)
         self.assertRaises(PermissionError, data_viz.boxplot, [
-                          1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1], "read_only.txt")
-        os.remove("read_only.txt")
+                          1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1], "read_only.png")
+        os.remove("read_only.png")
 
 
 class TestHistogram(unittest.TestCase):
@@ -82,12 +82,12 @@ class TestHistogram(unittest.TestCase):
         os.remove("newfile.png")
 
     def test_combo_permission(self):
-        with open("read_only.txt", "w") as f:
+        with open("read_only.png", "w") as f:
             f.write("Hello, World!")
-        os.chmod("read_only.txt", stat.S_IREAD | stat.S_IRGRP | stat.S_IROTH)
+        os.chmod("read_only.png", stat.S_IREAD | stat.S_IRGRP | stat.S_IROTH)
         self.assertRaises(PermissionError, data_viz.histogram, [
-                          1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1], "read_only.txt")
-        os.remove("read_only.txt")
+                          1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1], "read_only.png")
+        os.remove("read_only.png")
 
 
 class TestCombo(unittest.TestCase):
@@ -125,9 +125,9 @@ class TestCombo(unittest.TestCase):
         os.remove("newfile.png")
 
     def test_combo_permission(self):
-        with open("read_only.txt", "w") as f:
+        with open("read_only.png", "w") as f:
             f.write("Hello, World!")
-        os.chmod("read_only.txt", stat.S_IREAD | stat.S_IRGRP | stat.S_IROTH)
+        os.chmod("read_only.png", stat.S_IREAD | stat.S_IRGRP | stat.S_IROTH)
         self.assertRaises(PermissionError, data_viz.combo, [
-                          1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1], "read_only.txt")
-        os.remove("read_only.txt")
+                          1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1], "read_only.png")
+        os.remove("read_only.png")

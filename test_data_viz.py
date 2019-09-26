@@ -47,7 +47,7 @@ class TestBoxPlot(unittest.TestCase):
         os.remove("read_only.png")
 
     def test_boxplot_wrong_file(self):
-        self.assertRaises(TypeError, data_viz.boxplot,
+        self.assertRaises(ValueError, data_viz.boxplot,
                           [1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1], "read_only.txt")
 
 
@@ -94,7 +94,7 @@ class TestHistogram(unittest.TestCase):
         os.remove("read_only.png")
 
     def test_histogram_wrong_file(self):
-        self.assertRaises(TypeError, data_viz.histogram,
+        self.assertRaises(ValueError, data_viz.histogram,
                           [1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1], "read_only.txt")
 
 
@@ -141,5 +141,5 @@ class TestCombo(unittest.TestCase):
         os.remove("read_only.png")
 
     def test_combo_wrong_file(self):
-        self.assertRaises(TypeError, data_viz.combo,
+        self.assertRaises(ValueError, data_viz.combo,
                           [1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1], "read_only.txt")

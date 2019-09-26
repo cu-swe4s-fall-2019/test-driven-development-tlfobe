@@ -29,3 +29,32 @@ class TestBoxPlot(unittest.TestCase):
                           [1, 2, 3, 4, 5, 6, 7],
                           1,
                           )
+
+class TestHistogram(unittest.TestCase):
+    def test_histogram_null(self):
+        self.assertRaises(TypeError,
+                          data_viz.histogram,
+                          None,
+                          )
+
+    def test_histogram_empty_list(self):
+        self.assertRaises(IndexError,
+                          data_viz.histogram,
+                          [],
+                          )
+
+    def test_histogram_wrong_type(self):
+        self.assertRaises(TypeError, data_viz.histogram, 'string','file.png')
+        self.assertRaises(TypeError, data_viz.histogram, dict(),'file.png')
+        self.assertRaises(TypeError, data_viz.histogram, True,'file.png')
+
+    def test_histogram_list_wrong_type(self):
+        self.assertRaises(TypeError, data_viz.histogram,
+                          ['string', 1, 2, ['List!'],],
+                           )
+
+    def test_histogram_filename_str(self):
+        self.assertRaises(TypeError, data_viz.histogram,
+                          [1, 2, 3, 4, 5, 6, 7],
+                          1,
+                          )

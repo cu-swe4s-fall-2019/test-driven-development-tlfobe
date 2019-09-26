@@ -38,7 +38,25 @@ def boxplot(L, out_file_name = "boxplot.png"):
 
 
 
-def histogram(L, out_file_name):
+def histogram(L, out_file_name = "histogram.png"):
+    if L is None:
+        raise TypeError("histogram : Please supply a list and")
+
+    if not isinstance(L, (list, np.ndarray)):
+        raise TypeError("histogram : Incorrect input type, "
+                        + "please supply a list!")
+
+    if len(L) == 0:
+        raise IndexError("histogram : Unpopulated list!")
+
+    list_types = [not isinstance(val, (float, int, complex, np.float, np.int, np.complex))
+                  for val in L]
+
+    if any(list_types):
+        raise TypeError("histogram : List contains invalid type!")
+
+    if type(out_file_name) != str:
+        raise TypeError("histogram : filename is invalid type!")
     pass
 
 

@@ -17,6 +17,12 @@ def boxplot(L, out_file_name = "boxplot.png"):
     if any(list_types):
         raise TypeError("boxplot : List contains invalid type!")
 
+    if type(out_file_name) ! = str:
+        raise TypeError("boxplot : filename is invalid type!")
+
+
+
+
 
 def histogram(L, out_file_name):
     pass

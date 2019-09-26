@@ -22,4 +22,11 @@ class TestMathLib(unittest.TestCase):
         self.assertRaises(TypeError, math_lib.list_mean, True)
 
     def test_list_mean_list_wrong_type(self):
-        self.assertRaises(TypeError, math_lib.list_mean, ['string', 1, 2, ['List!']])
+        self.assertRaises(TypeError, math_lib.list_mean,
+                          ['string', 1, 2, ['List!']]
+                          )
+
+    def test_list_mean_const(self):
+        self.assertEquals(math_lib.list_mean([1,2,3,4,5]), 3)
+
+        

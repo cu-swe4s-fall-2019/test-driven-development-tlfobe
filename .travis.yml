@@ -19,4 +19,4 @@ script:
     - bash gen_data_random.sh | python -m unittest test_get_data.py
     - bash gen_data.sh | python -m unittest test_get_data.py
     - python -m unittest test_data_viz.py
-    - pycodetest *.py
+    - pycodestyle *.py

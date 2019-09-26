@@ -14,3 +14,8 @@ class TestMathLib(unittest.TestCase):
                           math_lib.list_mean,
                           [],
                           )
+
+    def test_list_mean_wrong_type(self):
+        self.assertRaises(TypeError, math_lib.list_mean, 'string')
+        self.assertRaises(TypeError, math_lib.list_mean, dict())
+        self.assertRaises(TypeError, math_lib.list_mean, True)

@@ -1,4 +1,5 @@
 import sys
+import numpy as np
 
 
 def list_mean(L):
@@ -12,6 +13,10 @@ def list_mean(L):
     if len(L) == 0:
         raise IndexError("list_mean : Unpopulated list!")
 
+    list_types = [not isinstance(L, (float, int, complex, np.float, np.int, np.complex))]
+
+    if any(list_types):
+        raise TypeError("list_mean : List contains invalid type!")
     
 
 

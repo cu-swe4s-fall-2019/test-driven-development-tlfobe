@@ -1,5 +1,6 @@
 import unittest
 import math_lib
+import numpy as np
 
 
 class TestMathLib(unittest.TestCase):
@@ -19,3 +20,6 @@ class TestMathLib(unittest.TestCase):
         self.assertRaises(TypeError, math_lib.list_mean, 'string')
         self.assertRaises(TypeError, math_lib.list_mean, dict())
         self.assertRaises(TypeError, math_lib.list_mean, True)
+
+    def test_list_mean_list_wrong_type(self):
+        self.assertRaises(TypeError, math_lib.list_mean, ['string', 1, 2, ['List!']])

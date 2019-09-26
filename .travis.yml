@@ -12,5 +12,6 @@ before_install:
     - conda install --yes python=3.6
       
 script:
+    - python -m unittest test_math_lib.py
     - bash test_viz.sh
     - python test_viz.py

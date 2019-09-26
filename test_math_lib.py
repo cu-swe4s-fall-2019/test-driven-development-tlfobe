@@ -33,5 +33,9 @@ class TestMathLib(unittest.TestCase):
         exp_mean = np.random.uniform(0, 100)
         dist = np.random.normal(loc=exp_mean, scale=1, size=10000).tolist()
         self.assertAlmostEqual(math_lib.list_mean(dist), exp_mean, places = 1)
-        
+
+    def test_listmean_complex(self):
+        self.assertEquals(math_lib.list_mean([1-3j, 2-2j, 3-1j]), 2-2j)
+
+    
 

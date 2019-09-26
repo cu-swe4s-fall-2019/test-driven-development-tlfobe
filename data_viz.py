@@ -91,4 +91,19 @@ def combo(L, out_file_name = "hist_boxplot_combo.png"):
     if type(out_file_name) != str:
         raise TypeError("combo : filename is invalid type!")
     else:
-        return None
+        fig= plt.figure(figsize=(10,10), dpi=300)
+        plt.suptitle("Mean : "+str(math_lib.list_mean(L))+ \
+                        " St-Dev : "+str(math_lib.list_stdev(L)))
+        
+        # Histogram
+        ax1 = fig.add_subplot(2, 1, 1)
+        ax1.set_ylabel("Values")
+        ax1.set_xlabel("Frequency")
+        ax1.hist(L)
+
+        # BoxPlot
+        ax2 = fig.add_subplot(2, 1, 2)
+        ax2.set_ylabel("Values")
+        ax2.boxplot(L)
+
+        plt.savefig(out_file_name, bbox_inches='tight')

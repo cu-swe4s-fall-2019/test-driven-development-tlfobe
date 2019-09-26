@@ -98,3 +98,8 @@ class TestCombo(unittest.TestCase):
                           [1, 2, 3, 4, 5, 6, 7],
                           1,
                           )
+
+    def test_combo_write_to_file(self):
+        data_viz.combo([1,2,3,4,5,6,5,4,3,2,1], 'newfile.png')
+        self.assertTrue(os.path.exists("newfile.png"))
+        os.remove("newfile.png")

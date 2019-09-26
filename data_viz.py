@@ -23,15 +23,17 @@ def boxplot(L, out_file_name = "boxplot.png"):
 
     if type(out_file_name) != str:
         raise TypeError("boxplot : filename is invalid type!")
-
-    fig= plt.figure(figsize=(10,10), dpi=300)
-    ax = fig.add_subplot(1, 1, 1)
-    ax.title.set_text("Mean : "+str(math_lib.list_mean(L))+ \
-                      " St-Dev : "+str(math_lib.list_stdev(L)))
-    ax.set_ylabel("Values")
     
-    ax.boxplot(L)
-    plt.savefig(out_file_name, bbox_inches='tight')
+    else:
+        fig= plt.figure(figsize=(10,10), dpi=300)
+        ax = fig.add_subplot(1, 1, 1)
+        ax.title.set_text("Mean : "+str(math_lib.list_mean(L))+ \
+                        " St-Dev : "+str(math_lib.list_stdev(L)))
+        ax.set_ylabel("Values")
+        
+        ax.boxplot(L)
+        plt.savefig(out_file_name, bbox_inches='tight')
+        return 0
 
 
 

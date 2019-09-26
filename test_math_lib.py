@@ -70,5 +70,8 @@ class TestMathLib(unittest.TestCase):
         dist = np.random.normal(loc=0, scale=exp_std, size=100000).tolist()
         self.assertAlmostEqual(math_lib.list_stdev(dist), exp_std, places = 0) 
 
-    
+    def test_list_stdev_np_array(self):
+        exp_std = np.random.uniform(0, 100)
+        dist = np.random.normal(loc=0, scale=exp_std, size=100000)
+        self.assertAlmostEqual(math_lib.list_stdev(dist), exp_std, places = 0) 
 

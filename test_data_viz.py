@@ -1,6 +1,7 @@
 import unittest
 import os
 import data_viz
+import stat
 
 class TestBoxPlot(unittest.TestCase):
     def test_boxplot_null(self):
@@ -103,3 +104,12 @@ class TestCombo(unittest.TestCase):
         data_viz.combo([1,2,3,4,5,6,5,4,3,2,1], 'newfile.png')
         self.assertTrue(os.path.exists("newfile.png"))
         os.remove("newfile.png")
+
+    def test_combo_permission(self):
+        with open("read_only.txt", "w") as f:
+            f.write("Hello, World!")
+        os.chmod("read_only.txt", stat.S_IREAD|stat.S_IRGRP|stat.S_IROTH)
+        self.assertRaises(PermissionError, data_viz.combo, [1,2,3,4,5,6,5,4,3,2,1], "read_only.txt")
+        os.remove("read_only.txt")
+        
+        

@@ -25,7 +25,7 @@ def boxplot(L, out_file_name = "boxplot.png"):
         raise TypeError("boxplot : filename is invalid type!")
     
     else:
-        fig= plt.figure(figsize=(10,10), dpi=300)
+        fig= plt.figure(figsize=(3,3), dpi=300)
         ax = fig.add_subplot(1, 1, 1)
         ax.title.set_text("Mean : "+str(math_lib.list_mean(L))+ \
                         " St-Dev : "+str(math_lib.list_stdev(L)))
@@ -60,7 +60,7 @@ def histogram(L, out_file_name = "histogram.png"):
     if type(out_file_name) != str:
         raise TypeError("histogram : filename is invalid type!")
     else:
-        fig= plt.figure(figsize=(10,10), dpi=300)
+        fig= plt.figure(figsize=(3,3), dpi=300)
         ax = fig.add_subplot(1, 1, 1)
         ax.title.set_text("Mean : "+str(math_lib.list_mean(L))+ \
                         " St-Dev : "+str(math_lib.list_stdev(L)))
@@ -91,7 +91,7 @@ def combo(L, out_file_name = "hist_boxplot_combo.png"):
     if type(out_file_name) != str:
         raise TypeError("combo : filename is invalid type!")
     else:
-        fig= plt.figure(figsize=(10,10), dpi=300)
+        fig= plt.figure(figsize=(3,3), dpi=300)
         plt.suptitle("Mean : "+str(math_lib.list_mean(L))+ \
                         " St-Dev : "+str(math_lib.list_stdev(L)))
         
@@ -105,5 +105,7 @@ def combo(L, out_file_name = "hist_boxplot_combo.png"):
         ax2 = fig.add_subplot(2, 1, 2)
         ax2.set_ylabel("Values")
         ax2.boxplot(L)
-
+    try:
         plt.savefig(out_file_name, bbox_inches='tight')
+    except:
+        raise PermissionError("combo : Unable to write to "+out_file_name+". Check file permissions!")

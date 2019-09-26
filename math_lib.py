@@ -1,6 +1,10 @@
+import sys
+
 
 def list_mean(L):
-    return None
+    if L is None:
+        raise TypeError("Please supply a list!")
+
 
 def list_stdev(L):
     return None

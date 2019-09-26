@@ -7,10 +7,10 @@ matplotlib.use('Agg')
 
 def boxplot(L, out_file_name="boxplot.png"):
     if L is None:
-        raise ValueError("boxplot : Please supply a list and")
+        raise TypeError("boxplot : Please supply a list and")
 
     if not isinstance(L, (list, np.ndarray)):
-        raise ValueError("boxplot : Incorrect input type, "
+        raise TypeError("boxplot : Incorrect input type, "
                         + "please supply a list!")
 
     if len(L) == 0:
@@ -23,10 +23,10 @@ def boxplot(L, out_file_name="boxplot.png"):
                   for val in L]
 
     if any(list_types):
-        raise ValueError("boxplot : List contains invalid type!")
+        raise TypeError("boxplot : List contains invalid type!")
 
     if type(out_file_name) != str:
-        raise ValueError("boxplot : filename is invalid type!")
+        raise TypeError("boxplot : filename is invalid type!")
 
     else:
         fig = plt.figure(figsize=(3, 3), dpi=300)
@@ -49,10 +49,10 @@ def boxplot(L, out_file_name="boxplot.png"):
 
 def histogram(L, out_file_name="histogram.png"):
     if L is None:
-        raise ValueError("histogram : Please supply a list and")
+        raise TypeError("histogram : Please supply a list and")
 
     if not isinstance(L, (list, np.ndarray)):
-        raise ValueError("histogram : Incorrect input type, "
+        raise TypeError("histogram : Incorrect input type, "
                         + "please supply a list!")
 
     if len(L) == 0:
@@ -63,10 +63,10 @@ def histogram(L, out_file_name="histogram.png"):
                   for val in L]
 
     if any(list_types):
-        raise ValueError("histogram : List contains invalid type!")
+        raise TypeError("histogram : List contains invalid type!")
 
     if type(out_file_name) != str:
-        raise ValueError("histogram : filename is invalid type!")
+        raise TypeError("histogram : filename is invalid type!")
     else:
         fig = plt.figure(figsize=(3, 3), dpi=300)
         ax = fig.add_subplot(1, 1, 1)
@@ -89,10 +89,10 @@ def histogram(L, out_file_name="histogram.png"):
 
 def combo(L, out_file_name="hist_boxplot_combo.png"):
     if L is None:
-        raise ValueError("combo : Please supply a list and")
+        ("combo : Please supply a list and")
 
     if not isinstance(L, (list, np.ndarray)):
-        raise ValueError("combo : Incorrect input type, "
+        raise TypeError("combo : Incorrect input type, "
                         + "please supply a list!")
 
     if len(L) == 0:
@@ -103,10 +103,10 @@ def combo(L, out_file_name="hist_boxplot_combo.png"):
                   for val in L]
 
     if any(list_types):
-        raise ValueError("combo : List contains invalid type!")
+        raise TypeError("combo : List contains invalid type!")
 
     if type(out_file_name) != str:
-        raise ValueError("combo : filename is invalid type!")
+        raise TypeError("combo : filename is invalid type!")
     else:
         fig = plt.figure(figsize=(3, 3), dpi=300)
         plt.suptitle("Mean : "+str(math_lib.list_mean(L)) +

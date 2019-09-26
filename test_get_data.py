@@ -20,3 +20,5 @@ class TestGetData(unittest.TestCase):
             size = len(line.rstrip().split(' '))
 
         self.assertRaises(IndexError, get_data.read_stdin_col, size+1)
+
+    # Cannot write further tests because stdin is only readable once.

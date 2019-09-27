@@ -3,6 +3,18 @@ import numpy as np
 
 
 def list_mean(L):
+    """
+    function to compute mean of a list of numbers
+
+    Arguments
+    ---------
+    L : list of ints/floats
+        input list to compute mean
+
+    Returns
+    -------
+    mean : float
+    """
     if L is None:
         raise TypeError("list_mean : Please supply a list!")
 
@@ -26,6 +38,18 @@ def list_mean(L):
 
 
 def list_stdev(L):
+    """
+    function to compute the standard deviation of a list of numbers
+
+    Arguments
+    ---------
+    L : list of ints/floats
+        list of numbers to calculate the stdev of
+
+    Returns
+    -------
+    stdev : float
+    """
     if L is None:
         raise TypeError("list_mean : Please supply a list!")
 

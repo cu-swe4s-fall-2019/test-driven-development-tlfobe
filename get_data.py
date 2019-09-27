@@ -2,6 +2,19 @@ import sys
 
 
 def read_stdin_col(col_num):
+    """
+    function that reads space separated numbers from stdin and converts
+    them to a list
+
+    Arguments
+    ---------
+    col_num : int
+        column number extract from stdin
+
+    Returns
+    -------
+    column : the list of values from the col_num in stdin
+    """
     if col_num is None:
         raise TypeError("read_stdin_col : Please provide a column number!")
     if not isinstance(col_num, int):

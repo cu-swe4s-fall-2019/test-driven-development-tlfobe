@@ -6,6 +6,14 @@ matplotlib.use('Agg')
 
 
 def boxplot(L, out_file_name="boxplot.png"):
+    """
+    constructs a boxplot and writes the plot to the specified filename
+
+    Arguments
+    ---------
+    L : list or np.array of ints/floats
+        list of numbers that will be put into a boxplot
+    """
     if L is None:
         raise TypeError("boxplot : Please supply a list and")
 
@@ -48,6 +56,14 @@ def boxplot(L, out_file_name="boxplot.png"):
 
 
 def histogram(L, out_file_name="histogram.png"):
+    """
+    constructs a histogram and writes the plot the specified filename
+
+    Arguments
+    ---------
+    L : list or np.array of ints/floats
+        list of numbers that will be put into a boxplot
+    """
     if L is None:
         raise TypeError("histogram : Please supply a list and")
 
@@ -88,6 +104,15 @@ def histogram(L, out_file_name="histogram.png"):
 
 
 def combo(L, out_file_name="hist_boxplot_combo.png"):
+    """
+    constructs a combination histogram and boxplot and writes
+    the plot the specified filename
+
+    Arguments
+    ---------
+    L : list or np.array of ints/floats
+        list of numbers that will be put into a boxplot
+    """
     if L is None:
         ("combo : Please supply a list and")
 

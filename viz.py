@@ -52,10 +52,17 @@ def main():
             data_viz.histogram(data, out_file_name=args.out_file)
         except IndexError:
             print("viz.py : STDIN list is empty!")
+            sys.exit()
         except PermissionError:
             print("viz.py : Output file "+args.out_file +
                   " is not accessible. Check your permissions!",
                   file=sys.stderr)
+            sys.exit()
+        except ValueError:
+            print("viz.py : "+args.out_file +
+                  " has an incompatible file extension!",
+                  file=sys.stderr)
+
     if args.plot_type == "boxplot":
         try:
             data_viz.boxplot(data, out_file_name=args.out_file)
@@ -65,6 +72,10 @@ def main():
             print("viz.py : Output file "+args.out_file +
                   " is not accessible. Check your permissions!",
                   file=sys.stderr)
+        except ValueError:
+            print("viz.py : "+args.out_file +
+                  " has an incompatible file extension!",
+                  file=sys.stderr)
     if args.plot_type == "combo":
         try:
             data_viz.combo(data, out_file_name=args.out_file)
@@ -73,6 +84,10 @@ def main():
         except PermissionError:
             print("viz.py : Output file "+args.out_file +
                   " is not accessible. Check your permissions!",
+                  file=sys.stderr)
+        except ValueError:
+            print("viz.py : "+args.out_file +
+                  " has an incompatible file extension!",
                   file=sys.stderr)
 
 

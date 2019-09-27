@@ -1,10 +1,11 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import math_lib
 import matplotlib
 matplotlib.use('Agg')
-import matplotlib.pyplot as plt
 
-def boxplot(L, out_file_name = "boxplot.png"):
+
+def boxplot(L, out_file_name="boxplot.png"):
     """
     constructs a boxplot and writes the plot to the specified filename
 
@@ -23,7 +24,10 @@ def boxplot(L, out_file_name = "boxplot.png"):
     if len(L) == 0:
         raise IndexError("boxplot : Unpopulated list!")
 
-    list_types = [not isinstance(val, (float, int, complex, np.float, np.int, np.complex))
+    list_types = [not isinstance(val, (float, int, complex,
+                                       np.float, np.int, np.complex
+                                       )
+                                 )
                   for val in L]
 
     if any(list_types):
@@ -31,26 +35,27 @@ def boxplot(L, out_file_name = "boxplot.png"):
 
     if type(out_file_name) != str:
         raise TypeError("boxplot : filename is invalid type!")
-    
+
     else:
-        fig= plt.figure(figsize=(3,3), dpi=300)
+        fig = plt.figure(figsize=(3, 3), dpi=300)
         ax = fig.add_subplot(1, 1, 1)
-        ax.title.set_text("Mean : "+str(math_lib.list_mean(L))+ \
-                        " St-Dev : "+str(math_lib.list_stdev(L)))
+        ax.title.set_text("Mean : "+str(math_lib.list_mean(L)) +
+                          " St-Dev : "+str(math_lib.list_stdev(L)))
         ax.set_ylabel("Values")
-        
+
         ax.boxplot(L)
     try:
         plt.savefig(out_file_name, bbox_inches='tight')
-    except:
-        raise PermissionError("boxplot : Unable to write to "+out_file_name+". Check file permissions!")
+    except PermissionError:
+        raise PermissionError(
+            "boxplot : Unable to write to "+out_file_name +
+            ". Check file permissions!")
+    except ValueError:
+        raise ValueError(
+            "boxplot : Incompatible file extension on "+out_file_name)
 
 
-
-
-
-
-def histogram(L, out_file_name = "histogram.png"):
+def histogram(L, out_file_name="histogram.png"):
     """
     constructs a histogram and writes the plot the specified filename
 
@@ -69,7 +74,8 @@ def histogram(L, out_file_name = "histogram.png"):
     if len(L) == 0:
         raise IndexError("histogram : Unpopulated list!")
 
-    list_types = [not isinstance(val, (float, int, complex, np.float, np.int, np.complex))
+    list_types = [not isinstance(val, (float, int, complex,
+                                       np.float, np.int, np.complex))
                   for val in L]
 
     if any(list_types):
@@ -78,23 +84,29 @@ def histogram(L, out_file_name = "histogram.png"):
     if type(out_file_name) != str:
         raise TypeError("histogram : filename is invalid type!")
     else:
-        fig= plt.figure(figsize=(3,3), dpi=300)
+        fig = plt.figure(figsize=(3, 3), dpi=300)
         ax = fig.add_subplot(1, 1, 1)
-        ax.title.set_text("Mean : "+str(math_lib.list_mean(L))+ \
-                        " St-Dev : "+str(math_lib.list_stdev(L)))
+        ax.title.set_text("Mean : "+str(math_lib.list_mean(L)) +
+                          " St-Dev : "+str(math_lib.list_stdev(L)))
         ax.set_ylabel("Values")
         ax.set_xlabel("Frequency")
-        
+
         ax.hist(L)
     try:
         plt.savefig(out_file_name, bbox_inches='tight')
-    except:
-        raise PermissionError("histogram : Unable to write to "+out_file_name+". Check file permissions!")
+    except PermissionError:
+        raise PermissionError(
+            "histogram : Unable to write to "+out_file_name +
+            ". Check file permissions!")
+    except ValueError:
+        raise ValueError(
+            "histogram : Incompatible file extension on "+out_file_name)
 
 
-def combo(L, out_file_name = "hist_boxplot_combo.png"):
+def combo(L, out_file_name="hist_boxplot_combo.png"):
     """
-    constructs a combination histogram and boxplot and writes the plot the specified filename
+    constructs a combination histogram and boxplot and writes
+    the plot the specified filename
 
     Arguments
     ---------
@@ -102,7 +114,7 @@ def combo(L, out_file_name = "hist_boxplot_combo.png"):
         list of numbers that will be put into a boxplot
     """
     if L is None:
-        raise TypeError("combo : Please supply a list and")
+        ("combo : Please supply a list and")
 
     if not isinstance(L, (list, np.ndarray)):
         raise TypeError("combo : Incorrect input type, "
@@ -111,7 +123,8 @@ def combo(L, out_file_name = "hist_boxplot_combo.png"):
     if len(L) == 0:
         raise IndexError("combo : Unpopulated list!")
 
-    list_types = [not isinstance(val, (float, int, complex, np.float, np.int, np.complex))
+    list_types = [not isinstance(val, (float, int, complex,
+                                       np.float, np.int, np.complex))
                   for val in L]
 
     if any(list_types):
@@ -120,10 +133,10 @@ def combo(L, out_file_name = "hist_boxplot_combo.png"):
     if type(out_file_name) != str:
         raise TypeError("combo : filename is invalid type!")
     else:
-        fig= plt.figure(figsize=(3,3), dpi=300)
-        plt.suptitle("Mean : "+str(math_lib.list_mean(L))+ \
-                        " St-Dev : "+str(math_lib.list_stdev(L)))
-        
+        fig = plt.figure(figsize=(3, 3), dpi=300)
+        plt.suptitle("Mean : "+str(math_lib.list_mean(L)) +
+                     " St-Dev : "+str(math_lib.list_stdev(L)))
+
         # Histogram
         ax1 = fig.add_subplot(2, 1, 1)
         ax1.set_ylabel("Values")
@@ -136,5 +149,10 @@ def combo(L, out_file_name = "hist_boxplot_combo.png"):
         ax2.boxplot(L)
     try:
         plt.savefig(out_file_name, bbox_inches='tight')
-    except:
-        raise PermissionError("combo : Unable to write to "+out_file_name+". Check file permissions!")
+    except PermissionError:
+        raise PermissionError(
+            "combo : Unable to write to "+out_file_name +
+            ". Check file permissions!")
+    except ValueError:
+        raise ValueError(
+            "combo : Incompatible file extension on "+out_file_name)

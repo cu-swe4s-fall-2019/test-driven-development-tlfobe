@@ -51,44 +51,51 @@ def main():
         try:
             data_viz.histogram(data, out_file_name=args.out_file)
         except IndexError:
-            print("viz.py : STDIN list is empty!")
-            sys.exit()
+            print("viz.py : STDIN list is empty!", file=sys.stderr)
+            sys.exit(1)
         except PermissionError:
             print("viz.py : Output file "+args.out_file +
                   " is not accessible. Check your permissions!",
                   file=sys.stderr)
-            sys.exit()
+            sys.exit(1)
         except ValueError:
             print("viz.py : "+args.out_file +
                   " has an incompatible file extension!",
                   file=sys.stderr)
+            sys.exit(1)
 
     if args.plot_type == "boxplot":
         try:
             data_viz.boxplot(data, out_file_name=args.out_file)
         except IndexError:
-            print("viz.py : STDIN list is empty!")
+            print("viz.py : STDIN list is empty!", file=sys.stderr)
+            sys.exit(1)
         except PermissionError:
             print("viz.py : Output file "+args.out_file +
                   " is not accessible. Check your permissions!",
                   file=sys.stderr)
+            sys.exit(1)
         except ValueError:
             print("viz.py : "+args.out_file +
                   " has an incompatible file extension!",
                   file=sys.stderr)
+            sys.exit(1)
     if args.plot_type == "combo":
         try:
             data_viz.combo(data, out_file_name=args.out_file)
         except IndexError:
-            print("viz.py : STDIN list is empty!")
+            print("viz.py : STDIN list is empty!", file=sys.stderr)
+            sys.exit(1)
         except PermissionError:
             print("viz.py : Output file "+args.out_file +
                   " is not accessible. Check your permissions!",
                   file=sys.stderr)
+            sys.exit(1)
         except ValueError:
             print("viz.py : "+args.out_file +
                   " has an incompatible file extension!",
                   file=sys.stderr)
+            sys.exit(1)
 
 
 if __name__ == '__main__':

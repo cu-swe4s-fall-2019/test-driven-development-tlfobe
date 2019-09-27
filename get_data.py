@@ -10,7 +10,7 @@ def read_stdin_col(col_num):
     ---------
     col_num : int
         column number extract from stdin
-    
+
     Returns
     -------
     column : the list of values from the col_num in stdin
